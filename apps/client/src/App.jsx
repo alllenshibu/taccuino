@@ -9,8 +9,7 @@ import Login from "./pages/Login"
 import Signup from "./pages/Signup"
 
 function App() {
-  const [cookies, setCookie, removeCookie] = useCookies()
-  const [markdown, setMarkdown] = useState("")
+  const [cookies, setCookie, removeCookie] = useCookies('token')
 
   useEffect(() => {
     if (!cookies?.token || cookies.token === "undefined") {
@@ -22,10 +21,10 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Dashboard />} />
-
         <Route path="/login" element={<Login />} />
-
         <Route path="/signup" element={<Signup />} />
+
+        <Route path="/notes/:id" element={<Dashboard />} />
       </Routes>
     </Router>
   )

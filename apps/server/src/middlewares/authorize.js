@@ -1,23 +1,25 @@
-const pool = require("../utils/pg");
+const User = require('../models/User');
 
 const authorize = async (req, res, next) => {
     const authHeader = req.headers.authorization;
+
 
     if (!authHeader || authHeader === '' || authHeader === undefined) {
         return res.status(401).send('Unauthorized');
     }
     const token = authHeader.split(' ')[1];
-    if (!token || token === '' || token === undefined) {
+
+    if (!token || token === '' || token === 'undefined' || token === undefined) {
         return res.status(401).send('Unauthorized');
     }
 
-    const user = await pool.query('SELECT * FROM "user" WHERE id = $1', [token]);
+    const user = await User.findOne({ _id: token });
 
-    if (user?.rows?.length === 0) {
+    if (!user) {
         return res.status(401).send('Unauthorized');
     }
 
-    req.user = user?.rows[0]?.username;
+    req.user = user.username;
     next();
 }
 
