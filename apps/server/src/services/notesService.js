@@ -54,7 +54,40 @@ const editNoteByIdService = async (user, noteId, note) => {
     }
 }
 
+
+
+const getAllNotesSkeletonService = async (user) => {
+    try {
+        console.log('Getting all notes skeleton');
+        const u = await User.findOne({ username: user });
+
+        if (!u) {
+            throw new Error('User not found');
+        }
+
+        let notes = await Note.find({ userId: u._id });
+
+        if (!notes) {
+            throw new Error('Note not found');
+        }
+
+        notes = notes.map(n => {
+            return {
+                id: n._id,
+                title: n.title,
+            }
+        })
+
+        return notes;
+
+    } catch (err) {
+        throw new Error(err.message);
+    }
+}
+
+
 module.exports = {
     getNoteByIdService,
-    editNoteByIdService
+    editNoteByIdService,
+    getAllNotesSkeletonService
 };

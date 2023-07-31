@@ -5,17 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="277e3bdf-c363-4fc6-8253-6c8d5f9fbba7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/apps/server/src/controllers/notesController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/server/src/middlewares/authorize.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/server/src/models/Note.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/server/src/services/notesService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/3f3bece6-30e7-481a-afe3-8a4e3afbc312.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/3f3bece6-30e7-481a-afe3-8a4e3afbc312.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/client/src/pages/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/pages/Dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/server/src/middlewares/authentication.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/client/src/components/Explorer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/apps/client/src/components/Explorer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/controllers/notesController.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/controllers/notesController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apps/server/src/routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/server/src/services/notesService.js" beforeDir="false" afterPath="$PROJECT_DIR$/apps/server/src/services/notesService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
