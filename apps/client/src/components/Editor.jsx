@@ -1,13 +1,13 @@
 import React from "react"
 
-function Editor({ onMarkdownChange, markdown }) {
+function Editor({ markdown, setMarkdown }) {
   return (
     <div id="editor" className="w-full h-full">
       <textarea
-        className="resize-none w-full h-full"
+        className="resize-none w-full h-full font-mono"
         value={markdown}
         onChange={(e) => {
-          onMarkdownChange(e.target.value)
+          setMarkdown(e.target.value)
         }}
       ></textarea>
     </div>

@@ -1,9 +1,12 @@
 import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 import axios from "axios"
 import { useCookies } from "react-cookie"
 
 export default function Signup() {
+  const router = useNavigate()
+
   const [user, setUser] = useState({
     username: "",
     password: "",
@@ -14,20 +17,18 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
-      console.log(process.env.NEXT_PUBLIC_API_URL + "/auth/signup")
+      console.log(import.meta.env.VITE_API_URL + "/auth/signup")
       const response = await axios.post(
-        process.env.NEXT_PUBLIC_API_URL + "/auth/signup",
+        import.meta.env.VITE_API_URL + "/auth/signup",
         user
       )
-      console.log(response)
       if (response.status === 200) {
         setCookie("token", response.data.token, { path: "/" })
-        console.log(cookies)
-        router.push("/")
+        router("/")
       }
     } catch (err) {
       console.log(err)
-      alert("Please")
+      alert("Something went wrong. Please try again.")
     }
   }
 
@@ -37,7 +38,7 @@ export default function Signup() {
       className="w-full h-full p-4 flex flex-col justify-center items-center gap-10"
     >
       <div>
-        <h1 className="text-5xl font-bold tracking-tighter">Xpense</h1>
+        <h1 className="text-5xl font-bold tracking-tighter">Taccuino</h1>
       </div>
       <form
         className="w-full md:w-96 flex flex-col gap-4"

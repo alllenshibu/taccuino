@@ -4,7 +4,7 @@ import ReactMarkdown from "react-markdown"
 
 function Previewer({ markdown }) {
   return (
-    <div id="preview" className="h-full w-full">
+    <div id="preview" className="h-full w-full p-2">
       <ReactMarkdown children={markdown}></ReactMarkdown>
     </div>
   )
