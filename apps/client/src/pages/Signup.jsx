@@ -74,6 +74,14 @@ export default function Signup() {
             Signup
           </button>
         </div>
+        <div>
+          <p className="text-center">
+            Already registered?{" "}
+            <a href="/login" className="underline">
+              Login
+            </a>
+          </p>
+        </div>
       </form>
     </div>
   )

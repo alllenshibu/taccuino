@@ -74,6 +74,14 @@ export default function login() {
             Login
           </button>
         </div>
+        <div>
+          <p className="text-center">
+            New here?{" "}
+            <a href="/signup" className="underline">
+              Signup
+            </a>
+          </p>
+        </div>
       </form>
     </div>
   )

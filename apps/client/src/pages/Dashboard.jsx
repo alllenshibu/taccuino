@@ -93,6 +93,14 @@ function Dasboard() {
   }, [params])
 
   useEffect(() => {
+    if (
+      cookies.token === undefined ||
+      cookies.token === null ||
+      cookies.token === ""
+    ) {
+      navigate("/login")
+    }
+    
     let interval
     interval = setInterval(() => {
       saveProgress()
