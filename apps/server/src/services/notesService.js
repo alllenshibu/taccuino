@@ -23,6 +23,30 @@ const getNoteByIdService = async (user, noteId) => {
     }
 }
 
+const createNewNoteService = async (user) => {
+    try {
+        console.log('Creating new note');
+        const u = await User.findOne({ username: user });
+
+        if (!u) {
+            throw new Error('User not found');
+        }
+
+        const note = new Note({
+            title: 'New',
+            content: '',
+            userId: u._id
+        });
+
+        await note.save();
+
+        return note;
+
+    } catch (err) {
+        throw new Error(err.message);
+    }
+}
+
 
 const editNoteByIdService = async (user, noteId, note) => {
     try {
@@ -88,6 +112,7 @@ const getAllNotesSkeletonService = async (user) => {
 
 module.exports = {
     getNoteByIdService,
+    createNewNoteService,
     editNoteByIdService,
     getAllNotesSkeletonService
 };

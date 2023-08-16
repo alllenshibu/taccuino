@@ -1,4 +1,4 @@
-const { getNoteByIdService, editNoteByIdService, getAllNotesSkeletonService } = require('../services/notesService');
+const { getNoteByIdService, createNewNoteService, editNoteByIdService, getAllNotesSkeletonService } = require('../services/notesService');
 
 const getNoteByIdController = async (req, res) => {
     const user = req?.user;
@@ -14,6 +14,23 @@ const getNoteByIdController = async (req, res) => {
 
     try {
         result = await getNoteByIdService(user, noteId);
+        if (result) {
+            res.status(200).send(result);
+        }
+    } catch (err) {
+        res.status(400).send(err.message);
+    }
+}
+
+const createNewNoteController = async (req, res) => {
+    const user = req?.user;
+
+    if (!user || user === '' || user === undefined) {
+        return res.status(400).send('User is required');
+    }
+
+    try {
+        result = await createNewNoteService(user);
         if (result) {
             res.status(200).send(result);
         }
@@ -70,6 +87,7 @@ const getAllNotesSkeletonController = async (req, res) => {
 
 module.exports = {
     getNoteByIdController,
+    createNewNoteController,
     editNoteByIdController,
     getAllNotesSkeletonController
 };

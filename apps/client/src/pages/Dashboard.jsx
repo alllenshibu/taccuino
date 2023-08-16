@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 
 import { useCookies } from "react-cookie"
 import axios from "axios"
@@ -11,19 +11,21 @@ import Previewer from "../components/Previewer"
 
 function Dasboard() {
   const params = useParams()
+  const navigate = useNavigate()
 
   const [cookies, setCookie] = useCookies(["token"])
   const [noteId, setNoteId] = useState(params.id)
   const [markdown, setMarkdown] = useState("")
 
   const saveProgress = async () => {
+    const title = markdown.split("\n")[0].replace("# ", "")
     try {
       const response = await axios.put(
         import.meta.env.VITE_API_URL + "/notes/" + params.id,
         {
           note: {
             content: markdown,
-            title: "test",
+            title: title || "Untitled",
           },
         },
         {
@@ -36,6 +38,28 @@ function Dasboard() {
       console.log(response)
       if (response.status === 200) {
         // setMarkdown(response.data?.content)
+      }
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const createNewNote = async () => {
+    try {
+      const response = await axios.post(
+        import.meta.env.VITE_API_URL + "/notes",
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${cookies.token}`,
+            type: "application/json",
+          },
+        }
+      )
+      console.log(response)
+      if (response.status === 200) {
+        setMarkdown(response.data?.content)
+        navigate("/notes/" + response.data?._id)
       }
     } catch (err) {
       console.log(err)
@@ -64,15 +88,22 @@ function Dasboard() {
 
   useEffect(() => {
     console.log(params)
+    saveProgress()
     fetchNote(params.id)
   }, [params])
 
+  useEffect(() => {
+    let interval
+    interval = setInterval(() => {
+      saveProgress()
+    }, 30000)
+
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <Layout>
-      <button onClick={saveProgress} className="btn">
-        Save
-      </button>
-      <Explorer />
+      <Explorer createNewNote={createNewNote} saveProgress={saveProgress} />
       <Editor markdown={markdown} setMarkdown={setMarkdown} />
       <Previewer markdown={markdown} />
     </Layout>

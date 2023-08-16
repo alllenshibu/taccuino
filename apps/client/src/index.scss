@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
     .btn {
         @apply px-6 py-2 rounded-md hover:shadow-md text-center transition duration-100 ease-in-out;
@@ -47,27 +46,27 @@
 
 #preview {
     h1 {
-        @apply text-4xl
+        @apply text-4xl pt-4 pb-2;
     }
 
     h2 {
-        @apply text-3xl
+        @apply text-3xl pt-4 pb-2;
     }
 
     h3 {
-        @apply text-2xl
+        @apply text-2xl pt-4 pb-2;
     }
 
     h4 {
-        @apply text-xl
+        @apply text-xl pt-4 pb-2;
     }
 
     h5 {
-        @apply text-lg
+        @apply text-lg pt-4 pb-2;
     }
 
     h6 {
-        @apply text-base
+        @apply text-base pt-4 pb-2;
     }
 
     ul {
@@ -81,4 +80,9 @@
             @apply list-decimal list-inside;
         }
     }
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-neutral-500) var(--color-neutral-300);
 }

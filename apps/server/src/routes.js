@@ -3,7 +3,7 @@ const express = require('express');
 const { authorize } = require('./middlewares/authorize');
 
 const { signupController, loginController } = require('./controllers/authenticationController');
-const { getNoteByIdController, editNoteByIdController, getAllNotesSkeletonController } = require('./controllers/notesController');
+const { getNoteByIdController, createNewNoteController, editNoteByIdController, getAllNotesSkeletonController } = require('./controllers/notesController');
 
 
 const Note = require('./models/Note');
@@ -23,6 +23,10 @@ router.post("/auth/login", async (req, res) => {
 // Notes routes
 router.get("/notes/:id", authorize, (req, res) => {
     getNoteByIdController(req, res);
+});
+
+router.post("/notes", authorize, (req, res) => {
+    createNewNoteController(req, res);
 });
 
 router.get("/notesskeleton", authorize, async (req, res) => {
