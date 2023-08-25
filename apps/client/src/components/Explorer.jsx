@@ -12,7 +12,6 @@ function Explorer({ createNewNote, saveProgress }) {
   const [allNotesSkelton, setAllNotesSkelton] = useState([])
 
   const handleNoteClick = async (noteId) => {
-    console.log(noteId)
     await saveProgress()
     navigate("/notes/" + noteId)
   }
@@ -28,7 +27,6 @@ function Explorer({ createNewNote, saveProgress }) {
           },
         }
       )
-      console.log(response)
       if (response.status === 200) {
         setAllNotesSkelton(response.data)
       }

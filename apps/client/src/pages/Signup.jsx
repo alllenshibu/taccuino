@@ -17,7 +17,6 @@ export default function Signup() {
   const handleSubmit = async (e) => {
     try {
       e.preventDefault()
-      console.log(import.meta.env.VITE_API_URL + "/auth/signup")
       const response = await axios.post(
         import.meta.env.VITE_API_URL + "/auth/signup",
         user
